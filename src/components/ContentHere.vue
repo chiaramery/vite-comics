@@ -120,13 +120,17 @@ export default {
 <template>
     <main>
         <div class="content-top">
-            <div class="jumbotron"></div>
+            <div class="jumbotron">
+                <button class="current">CURRENT SERIES</button>
+            </div>
+
             <div class="wrapper-item">
                 <div class="container">
                     <div class="row">
                         <ItemCard v-for="(item, index) in items" :key="index" :title="item.series.toLocaleUpperCase()"
                             :imgUrl="item.thumb" :type="item.type" />
                     </div>
+                    <button class="load">LOAD MORE</button>
                 </div>
             </div>
             <div class="container">
@@ -158,16 +162,29 @@ main {
 
     .content-top {
         margin-top: 6rem;
+        position: relative;
 
         .jumbotron {
             margin-top: 6rem;
             height: 16rem;
             background-image: url(../assets/img/jumbotron.jpg);
             background-size: cover;
+
+            .current {
+                background-color: rgb(29 134 247);
+                border-color: rgb(29 134 247);
+                color: white;
+                padding: .5em;
+                cursor: pointer;
+                position: absolute;
+                top: 16rem;
+                left: 18rem;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .wrapper-item {
-            background-color: black;
+            background-color: rgb(28 28 28);
             padding: 3em;
 
             .container {
@@ -177,6 +194,18 @@ main {
                     justify-content: center;
                     flex-wrap: wrap;
                     gap: .5em;
+                }
+
+                .load {
+                    background-color: rgb(29 134 247);
+                    border-color: rgb(29 134 247);
+                    color: white;
+                    padding: .5em;
+                    cursor: pointer;
+                    position: absolute;
+                    left: 50%;
+                    top: 97%;
+                    transform: translate(-50%, -50%);
                 }
             }
         }
@@ -200,7 +229,7 @@ main {
             width: 100%;
 
             .card {
-                padding: 3em 2em;
+                padding: 3em;
                 width: 100%;
                 @include flex("altro");
 
@@ -209,7 +238,6 @@ main {
                 }
 
                 a {
-                    margin-left: .5em;
                     font-size: .8em;
                     color: white;
                 }
