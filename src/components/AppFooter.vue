@@ -85,9 +85,8 @@ footer {
     .footer-bottom {
         width: 100%;
         @include flex ("altro");
-        position: fixed;
-        bottom: 0;
-        background-color: darkgray;
+        background-color: rgb(48 48 48);
+        ;
 
         .left {
             button {
@@ -99,7 +98,7 @@ footer {
             @include flex ("altro");
 
             h1 {
-                color: blue;
+                color: rgb(29 134 247);
                 font-size: 1em;
                 cursor: pointer;
             }

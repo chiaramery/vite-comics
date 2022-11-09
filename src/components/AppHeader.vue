@@ -63,18 +63,21 @@ export default {
 
 <template>
     <header>
-        <!-- LOGO -->
-        <div class="logo">
-            <img src="../assets/img/dc-logo.png" alt="">
-            <!-- NAV -->
+        <div class="container">
+            <!-- LOGO -->
+            <div class="logo">
+                <img src="../assets/img/dc-logo.png" alt="">
+                <!-- NAV -->
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li v-for="(link, index) in links" :key="index">
+                        <a :class="{ 'active': link.active }" :href="link.href">{{ link.title}}</a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
-        <nav class="header-nav">
-            <ul>
-                <li v-for="(link, index) in links" :key="index">
-                    <a :class="{ 'active': link.active }" :href="link.href">{{ link.title}}</a>
-                </li>
-            </ul>
-        </nav>
     </header>
 </template>
 
@@ -82,32 +85,58 @@ export default {
 @use "../styles/frame/mixins.scss" as *;
 
 header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 8rem;
-    background-color: lightgray;
+    height: 6rem;
+    background-color: rgb(255 255 255);
     @include flex ("altro");
 
-    .header-nav {
-        @include flex ("center");
+    .container {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
 
-        ul {
-            @include flex("center");
-            list-style: none;
+        .logo {
+            display: flex;
+            align-items: center;
 
-            li {
-                margin: 0px .8rem;
+            img {
+                width: 50px;
+                line-height: 6rem;
+            }
+        }
 
-                a {
-                    color: black;
+        .header-nav {
 
-                    &:hover,
-                    &.active {
-                        color: blue;
+            ul {
+                @include flex("altro");
+                list-style: none;
+
+
+                li {
+                    margin: 0px .8rem;
+
+
+                    a {
+                        font-size: .8em;
+                        color: black;
+                        cursor: pointer;
+                        display: inline-block;
+                        line-height: 6rem;
+                        border-bottom: 3px solid transparent;
+
+                        &:hover,
+                        &.active {
+                            border-bottom: 3px solid rgb(29 134 247);
+                            color: rgb(29 134 247);
+                        }
                     }
                 }
             }
         }
     }
+
 
 
 }
